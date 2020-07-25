@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios registrados</title>
+</head>
+<body>
+    <section>
+        <h1>Usuarios registrados en la base de datos</h1>
+        <p>Nombre de usuarios registrados en esta pagina</p>
+    </section>
+    <section>
+        <li>
+            <% usuarios.forEach(usuario => { %> 
+                <ul><%= usuario %> </ul>
+            <% }); %> 
+        </li>
+    </section>
+</body>
+</html>
