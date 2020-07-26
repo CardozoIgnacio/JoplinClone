@@ -25,6 +25,11 @@
             <div>
               <button type="submit">Aceptar</button>
             </div>
+            <%if(err[0]){ %> 
+              <div>
+                  <span><%=err[1]%></span>
+              </div>
+            <% }  %> 
           </form>        
       </div>
     </section>

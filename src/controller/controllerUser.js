@@ -1,67 +1,78 @@
-const controllerUser = {}
-const db = require('../db/dbConector');
-const usermodel=require('../model/userModel');
-const Usuario = require('../model/userModel');
+const controllerUser = {};
+const db = require("../db/dbConector");
+const usermodel = require("../model/userModel");
+const Usuario = require("../model/userModel");
 
-function getUsers(req,res){
-    usermodel.findAll()
-        .then(respuesta=>{
-       // console.log(respuesta);
-        res.render('listarUsers.ejs',{usuarios:respuesta})})
-        .catch(err=>console.log("Fallamos con total exito",err))
+function getUsers(req, res) {
+	usermodel
+		.findAll()
+		.then((respuesta) => {
+			// console.log(respuesta);
+			res.render("listarUsers.ejs", { usuarios: respuesta });
+		})
+		.catch((err) => console.log("Fallamos con total exito", err));
 }
 //const jane = await User.create({ firstName: "Jane", lastName: "Doe" });
-function createUser(req,res){
-    /*  
+function createUser(req, res) {
+	/*  
     console.log(data)
     */
-   const dataUser =req.body
-   Usuario.create({
-       nombre:dataUser.name,
-       email:dataUser.email,
-       password:dataUser.pass
-    })
-    res.redirect('/')
-}
-
-function loginUser(req,res){
-    const loginCredentials =req.body
-    Usuario.findAll({
-        where:{
-            nombre:loginCredentials.user,
-            password:loginCredentials.pass
-        }
-    }).then(x=>{
-        //console.log(x)
-        //console.log(user)
-        if (x.length===0){
-            res.render('index',{title:"Box note",err:true})
-        }else{
-            res.render('index',{title:"Box note",err:false})
-        }
-    })
-      .catch(err=>console.log("Fallamos con total exito",err))
-}
-
-function renderSignin(req,res){
-    res.render('userCreate',{title :"SignIn usuario"})
-}
-function renderListUsers(req,res){
-    Usuario.findAll({
-        attributes:['nombre','email']
-    }).then(list=>{
-        var  arryUser=[]
-        list.forEach(x=>arryUser.push(x.dataValues))
-       // console.log(lista)
-        res.render('listarUsers',{usuarios:arryUser})
+	const dataUser = req.body;
+   
+        
+        Usuario.create({
+            nombre: dataUser.name,
+            email: dataUser.email,
+            password: dataUser.pass,
+        })
+		.then(x=>{
+            res.redirect("/")
+        })
+		.catch(err=>{
+            res.render("userCreate", {
+                title: "Signin usario",
+				err: [true, "Usuario no valido ingrese nuevamente"]})})
+        
     }
+   
 
-    )
+function loginUser(req, res) {
+	const loginCredentials = req.body;
+	Usuario.findAll({
+		where: {
+			nombre: loginCredentials.user,
+			password: loginCredentials.pass,
+		},
+	})
+		.then((x) => {
+			//console.log(x)
+			//console.log(user)
+			if (x.length === 0) {
+				res.render("index", { title: "Box note", err: true });
+			} else {
+				res.render("index", { title: "Box note", err: false });
+			}
+		})
+		.catch((err) => console.log("Fallamos con total exito", err));
 }
 
-controllerUser.getUsers=getUsers
-controllerUser.createUser=createUser
-controllerUser.loginUser=loginUser
-controllerUser.renderSignin=renderSignin
-controllerUser.renderListUsers=renderListUsers
-module.exports = controllerUser
+function renderSignin(req, res) {
+	res.render("userCreate", { title: "SignIn usuario", err: [false, ""] });
+}
+function renderListUsers(req, res) {
+	Usuario.findAll({
+		attributes: ["nombre", "email"],
+	}).then((list) => {
+		var arryUser = [];
+		list.forEach((x) => arryUser.push(x.dataValues));
+		// console.log(lista)
+		res.render("listarUsers", { usuarios: arryUser });
+	});
+}
+
+controllerUser.getUsers = getUsers;
+controllerUser.createUser = createUser;
+controllerUser.loginUser = loginUser;
+controllerUser.renderSignin = renderSignin;
+controllerUser.renderListUsers = renderListUsers;
+module.exports = controllerUser;
