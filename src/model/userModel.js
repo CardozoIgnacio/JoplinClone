@@ -6,6 +6,7 @@ Usuario.init({
   // attributes
   id: {
     type: DataTypes.BIGINT,
+    autoIncrement:true,
     allowNull: false,
     primaryKey:true,
   },

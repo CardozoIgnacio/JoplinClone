@@ -1,13 +1,37 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    
-
-  </body>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title><%= title %></title>
+	</head>
+	<body>
+		<h1><%= title %></h1>
+		<section>
+			<div>
+				<h1>Loggin</h1>
+				<div>
+					<form action="/user/login" method="post">
+						<div>
+							<label for="user">Ingrese su usuario</label>
+							<input type="text" name="user" id="user" />
+						</div>
+						<div>
+							<label for="pass">Ingrese su contraseña</label>
+							<input type="password" name="pass" id="pass" />
+						</div>
+						<%if (err===true){ %> 
+							<div>
+								<span>Usuario o contraseña incorrecto.</span>
+							</div>
+						<%}  %> 
+                        <button type="submit">Ingresar</button>
+					</form>
+					<form action="/user/signin" method="get">
+						<button type="submit"> Signin </button>
+					</form>
+				</div>
+			</div>
+		</section>
+	</body>
 </html>

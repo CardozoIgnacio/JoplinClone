@@ -1,7 +1,8 @@
 const controllerIndex = {}
 
 function indexRender(req,res){
-    res.render('index',{title:"Getor de noticias"})
+    res.render('index',{title:"Box Note",version:"1.0",err:false})
+    
 }
 
 controllerIndex.indexRender= indexRender

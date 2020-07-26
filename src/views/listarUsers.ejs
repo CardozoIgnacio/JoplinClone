@@ -13,9 +13,10 @@
     <section>
         <li>
             <% usuarios.forEach(usuario => { %> 
-                <ul><%= usuario %> </ul>
+                <ul><%= usuario.nombre %>---<%= usuario.email  %>  </ul>
             <% }); %> 
         </li>
     </section>
+   <a href="/">Inicio</a>
 </body>
 </html>

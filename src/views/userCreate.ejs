@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p><%= title %></p>
+    <section>
+      <div>
+          <form action="/user" method="post">
+            <div>
+              <label for="name">Ingrese un nombre de usuario</label>
+              <input type="text" name="name" id="name" required>
+            </div>
+            <div>
+              <label for="password">Ingrese su password</label>
+              <input type="password" name="pass" id="pass" required>
+            </div>
+            <div>
+              <label for="email">Ingrese un email</label>
+              <input type="email" name="email" id="email" required>
+            </div>
+            <div>
+              <button type="submit">Aceptar</button>
+            </div>
+          </form>        
+      </div>
+    </section>
+    
+
+  </body>
+</html>
