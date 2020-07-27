@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> </title>
+</head>
+<body>
+    <h1><%= title %> </h1>
+    <section>
+        <form action="/notebook" method="post">
+            <div>
+                <label for="user">Ingrese usuario</label>
+                <input type="text" name="user" id="user">
+            </div>
+            <div>
+                <label for="name">Ingrese el nombre del book note</label>
+                <input type="text" name="name" id="name">
+            </div>
+            <div>
+                <button type="submit">Crear</button>
+            </div>
+        </form>   
+    </section>
+
+    <section>
+        <form action="/notebook/createnote" method="post">
+            <div>
+                <label for="title">Ingrese un titulo</label>
+                <input type="text" name="title" id="title">
+            </div>
+            <div>
+                <label for="body">Ingrese el contendio de la nota</label>
+                <textarea name="body" id="body" cols="30" rows="10"></textarea>
+            </div>
+            <div>
+                <button type="submit">cargar</button>
+            </div>
+
+        </form>
+    </section>
+</body>
+</html>

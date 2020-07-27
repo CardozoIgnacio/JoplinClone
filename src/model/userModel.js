@@ -1,5 +1,6 @@
 const { Sequelize, Model, DataTypes } = require('sequelize');
 const db = require('../db/dbConector')
+const BookNote =require('./booknoteModel');
 
 class Usuario extends Model {}
 Usuario.init({
@@ -29,11 +30,13 @@ Usuario.init({
   timestamps: false,
 
 
-  // disable the modification of tablenames; By default, sequelize will automatically
-  // transform all passed model names (first parameter of define) into plural.
-  // if you don't want that, set the following
-  freezeTableName: true,
-  // options
+
 });
+
+Usuario.associations=model=>{
+  Usuario.hasMany(BookNote,{
+    foreignKey:'userid'
+  })
+}
 
 module.exports= Usuario
