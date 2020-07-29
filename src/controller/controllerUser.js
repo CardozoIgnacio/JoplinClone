@@ -1,5 +1,4 @@
 const controllerUser = {};
-const db = require("../db/dbConector");
 const usermodel = require("../model/userModel");
 const Usuario = require("../model/userModel");
 

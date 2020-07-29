@@ -3,6 +3,8 @@ const db = require('../db/dbConector')
 const BookNote =require('./booknoteModel');
 
 class Usuario extends Model {}
+
+//const Usuario= db.define('usuarios',{
 Usuario.init({
   // attributes
   id: {
@@ -24,19 +26,25 @@ Usuario.init({
       type:DataTypes.STRING,
       allowNull:false
   }
-}, {
+},{
   sequelize:db,
-  modelName: 'usuario',
   timestamps: false,
+  underscored:true,
+  modelName:'usuarios'
 
-
-
-});
-
-Usuario.associations=model=>{
-  Usuario.hasMany(BookNote,{
-    foreignKey:'userid'
+ // underscored: true
+} );
+/*
+Usuario.associations= model=>{
+  
+  Usuario.hasMany(model.BookNote,{
+    foreignKey:'userid',
+    onDelete:'CASCADE',
+    hooks:true
   })
 }
+Usuario.hasMany(BookNote,{as:"usuario_id",onDelete:'CASCADE',foreignKey:'usuario_id'});
+*/
 
+//Usuario.hasMany(BookNote,{as:'booknote',onDelete:'CASCADE',foreignKey:'usuario_id'})
 module.exports= Usuario

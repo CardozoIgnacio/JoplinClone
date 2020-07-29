@@ -8,7 +8,8 @@
 <body>
     <h1><%= title %> </h1>
     <section>
-        <form action="/notebook" method="post">
+        <h2>Crar notebook</h2>
+        <form action="/booknote/createbooknote" method="post">
             <div>
                 <label for="user">Ingrese usuario</label>
                 <input type="text" name="user" id="user">
@@ -22,9 +23,10 @@
             </div>
         </form>   
     </section>
-
+    <br>
     <section>
-        <form action="/notebook/createnote" method="post">
+        <h1>Crear nota</h1>
+        <form action="/booknote/createnote" method="post">
             <div>
                 <label for="title">Ingrese un titulo</label>
                 <input type="text" name="title" id="title">
@@ -37,6 +39,31 @@
                 <button type="submit">cargar</button>
             </div>
 
+        </form>
+    </section>
+    <br>
+    <section>
+        <h2>Destruccion de notas</h2>
+        <form action="/booknote/destroynote" method="post">
+            <div>
+                <label for="idnote">Ingrese el id de la nota</label>
+                <input type="text" name="idnote" id="idnote">
+            </div>
+            <div>
+                <button type="submit">Borrar</button>
+            </div>
+        </form>
+    </section>
+    <section>
+        <h2>Destuccion de notebook</h2>
+        <form action="/booknote/destroybooknote" method="post">
+            <div>
+                <label for="idnotebook">Ingrese el id del Book note  a destruir</label>
+                <input type="text" name="idnotebook" id="idnotebook">
+            </div>
+            <div>
+                <button type="submit">Destroy</button>
+            </div>
         </form>
     </section>
 </body>

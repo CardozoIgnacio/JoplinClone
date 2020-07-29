@@ -17,8 +17,8 @@ CREATE TABLE Usuarios(
 CREATE TABLE Booknotes(
     id BIGSERIAL NOT NULL PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
-
-    idUser BIGSERIAL NOT NULL REFERENCES Usuarios(id)
+    usuario_id INTEGER NOT NULL, 
+    CONSTRAINT booknotes_fk  FOREIGN KEY (usuario_id) REFERENCES Usuarios(id) ON DELETE CASCADE
 );
 
 -- Creacion de notas--
@@ -26,6 +26,6 @@ CREATE TABLE Notes(
     id BIGSERIAL NOT NULL PRIMARY KEY,
     title VARCHAR(50) NOT NULL,
     body TEXT NOT NULL,
-
-    idNote BIGSERIAL NOT NULL REFERENCES Booknotes(id)
+    booknote_id INTEGER NOT NULL,
+    CONSTRAINT notes_fk FOREIGN KEY (booknote_id) REFERENCES Booknotes(id) ON DELETE CASCADE
 );
