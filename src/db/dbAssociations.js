@@ -1,6 +1,7 @@
 const booknote = require("../model/booknoteModel");
 const note = require("../model/noteModel");
 const user = require("../model/userModel");
+const db = require("./dbConector");
 
 function defineAssociations() {
 	booknote.hasMany(note, {
@@ -17,6 +18,7 @@ function defineAssociations() {
         { as: "booknoters"
         , foreignKey: "usuario_id" });
 
+		db.sync()
 	return { booknote, note, user };
 }
 
