@@ -19,7 +19,7 @@ function renderBooknote(req, res) {
 
 function createBooknote(req, res) {
 	const dataNoteBook = req.body;
-	console.log(dataNoteBook);
+	//console.log(dataNoteBook);
 	noteBookModel
 		.create({
 			usuario_id: dataNoteBook.user,
@@ -27,6 +27,7 @@ function createBooknote(req, res) {
 		})
 		.then((x) => {
 			console.log("Usuarios creado correctamente", x);
+			res.sendStatus(200)
 		})
 		.catch((err) => {
 			console.log("CreateBookNote --Error", err);
@@ -35,17 +36,18 @@ function createBooknote(req, res) {
 
 function createNote(req, res) {
 	const dataNote = req.body;
-	console.log(dataNote);
+	//console.log(dataNote);
 	noteModel
 		.create({
 			title: dataNote.title,
 			body: dataNote.body,
-			booknote_id: "1",
+			booknote_id: "2",
 		})
-		.then((x) => console.log("Datos cargados con total Exito"))
+		.then((x) => {
+			console.log("Datos cargados con total Exito")
+			res.sendStatus(200)})
 		.catch((err) => console.log("Create note --Error", err));
 
-	res.sendStatus(200);
 }
 
 function destroyNote(req, res) {
@@ -60,6 +62,7 @@ function destroyNote(req, res) {
 		})
 		.then((x) => {
 			console.log("La nota fue destruida correctamente", x);
+			res.sendStatus(200)
 		})
 		.catch((err) => {
 			console.log("DestroyNote--Error", err);
@@ -77,7 +80,10 @@ function destroyBookNote(req, res) {
 				id: idBookNote,
 			},
 		})
-		.then((x) => console.log("BookNote eliminado correctamente", x))
+		.then((x) => {
+			console.log("BookNote eliminado correctamente", x)
+			res.sendStatus(200)
+		})
 		.catch((err)=>{console.log("DestoyBook--Error",err)})
 		/*
 		.catch((err) => {
