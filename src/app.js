@@ -6,7 +6,8 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/user');
-var notebookRouter= require('./routes/booknote')
+var notebookRouter= require('./routes/booknote');
+var session= require('express-session')
 //require('./db/dbAssociations');
 //const db = require("./db/dbConector");
 
@@ -20,7 +21,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 app.use('/', indexRouter);
 app.use('/user', usersRouter);

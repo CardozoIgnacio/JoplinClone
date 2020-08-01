@@ -1,8 +1,18 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url('/images/home.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #00B7FF;
+
 }
 
+label,h1,span{
+  color: aliceblue;
+}
 a {
   color: #00B7FF;
 }
