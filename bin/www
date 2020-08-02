@@ -4,10 +4,10 @@
  * Module dependencies.
  */
 
+require("dotenv").config()
 var app = require('../src/app');
 var debug = require('debug')('crudsequelize:server');
 var http = require('http');
-
 /**
  * Get port from environment and store in Express.
  */
