@@ -3,41 +3,84 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="/stylesheets/style.css">
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+		<link rel="stylesheet" href="/stylesheets/style.css" />
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+			integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+			crossorigin="anonymous"
+		/>
 		<title><%= title %></title>
 	</head>
 	<body>
 		<div class="container">
-
-			<section class="float-right">
-				<h1><%= title %></h1>
-				<div >
-					<h1>Loggin</h1>
-					<div>
-						<form action="/user/login" method="post">
+			<section 
+			>
+			<!-- <div>
+				<h1>Loggin</h1>
+				<div>
+					<form action="/user/login" method="post">
+						<div>
+							<label for="user">Ingrese su usuario</label>
+							<input type="text" name="user" id="user" />
+						</div>
+						<div>
+							<label for="pass">Ingrese su contraseña</label>
+							<input type="password" name="pass" id="pass" />
+						</div>
+						
 							<div>
+								<span>Usuario o contraseña incorrecto.</span>
+							</div>
+						
+							<button type="submit">Ingresar</button>
+						</form>
+						<form action="/user/signin" method="get">
+							<button type="submit">Signin</button>
+						</form>
+						<br />
+					</div> -->
+					<div
+					class="float-right ">
+						<h1><%= title %></h1>
+						<h1>Login</h1>
+						<form action="/user/login" method="POST">
+							<div class="form-group">
 								<label for="user">Ingrese su usuario</label>
-								<input type="text" name="user" id="user" />
+								<input
+								type="text"
+								class="form-control"
+								id="user"
+								name="user"
+								aria-describedby="Nombre de usuario"
+								size="40"
+								/>
 							</div>
-							<div>
-								<label for="pass">Ingrese su contraseña</label>
-								<input type="password" name="pass" id="pass" />
+							<div class="form-group">
+								<label for="pass">Password</label>
+								<input
+									type="password"
+									class="form-control"
+									id="pass"
+									name="pass"
+									size="40"
+								/>
 							</div>
-							<%if (err===true){ %> 
+							<%if (msj.err){ %>
 								<div>
 									<span>Usuario o contraseña incorrecto.</span>
 								</div>
-								<%}  %> 
-								<button type="submit">Ingresar</button>
-							</form>
-							<form action="/user/signin" method="get">
-								<button type="submit"> Signin </button>
-							</form>
-						</div>
+							<%} %>
+								<button type="submit" class="btn btn-primary">Submit</button>
+								
+						</form>
+						<br>
+						<form action="/user/signin" method="get">
+							<button type="submit" class="btn btn-primary">Signin</button>
+						</form>
 					</div>
-				</section>
-			 </div>
-		</body>
-	</html>
-			
+				</div>
+			</section>
+		</div>
+	</body>
+</html>

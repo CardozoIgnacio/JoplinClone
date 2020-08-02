@@ -47,9 +47,9 @@ function loginUser(req, res) {
 			//console.log(x)
 			//console.log(user)
 			if (x.length === 0) {
-				res.render("index", { title: "Box note", err: true });
+				res.render("index", { title: "Box note",msj:{err:"Usuario o contraseña incorrectos"}});
 			} else {
-				res.render("index", { title: "Box note", err: false });
+				res.render("index", { title: "Box note", msj:{} });
 			}
 		})
 		.catch((err) => console.log("Fallamos con total exito", err));
