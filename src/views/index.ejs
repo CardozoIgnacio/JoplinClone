@@ -71,6 +71,11 @@
 									<span>Usuario o contraseña incorrecto.</span>
 								</div>
 							<%} %>
+							<% if (msj.exito){ %> 
+								<div>
+									<span><%= msj.exito %> </span>
+								</div>
+							<% } %> 
 								<button type="submit" class="btn btn-primary">Submit</button>
 								
 						</form>

@@ -25,12 +25,16 @@ function createUser(req, res) {
             password: dataUser.pass,
         })
 		.then(x=>{
-            res.redirect("/")
+			//res.redirect("/")
+			res.render("index",{title: "Signin usuario",msj:{exito:"Usuario registrado correctamente puede loguear"}})
         })
 		.catch(err=>{
             res.render("userCreate", {
-                title: "Signin usario",
-				err: [true, "Usuario no valido ingrese nuevamente"]})})
+				title: "Signin usario",
+				msj:{
+					err: "Usuario no valido ingrese nuevamente"
+				}
+			})})
         
     }
    
@@ -56,7 +60,7 @@ function loginUser(req, res) {
 }
 
 function renderSignin(req, res) {
-	res.render("userCreate", { title: "SignIn usuario", err: [false, ""] });
+	res.render("userCreate", { title: "SignIn usuario", msj:{}});
 }
 function renderListUsers(req, res) {
 	Usuario.findAll({
