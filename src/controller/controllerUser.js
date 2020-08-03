@@ -17,22 +17,22 @@ function createUser(req, res) {
     console.log(data)
     */
 	const dataUser = req.body;
-   
+	let {name,email,pass}= req.body
         
         Usuario.create({
-            nombre: dataUser.name,
-            email: dataUser.email,
-            password: dataUser.pass,
+            nombre: name,
+            email: email,
+            password: pass,
         })
 		.then(x=>{
 			//res.redirect("/")
-			res.render("index",{title: "Signin usuario",msj:{exito:"Usuario registrado correctamente puede loguear"}})
+			res.render("index",{title: "Login usuario",msj:{exito:"Usuario registrado correctamente puede loguear"}})
         })
 		.catch(err=>{
             res.render("userCreate", {
 				title: "Signin usario",
 				msj:{
-					err: "Usuario no valido ingrese nuevamente"
+					err: "Usuario no valido ingrese nuevamente"+err
 				}
 			})})
         
@@ -40,7 +40,13 @@ function createUser(req, res) {
    
 
 function loginUser(req, res) {
-	const loginCredentials = req.body;
+	const {user,pass} = req.body;
+	if (Usuario.validUser(user,pass)){
+		res.render("index", { title: "Box note ", msj:{} });
+	}else{
+		res.render("index", { title: "Box note",msj:{err:"Usuario o contraseña incorrectos"}});
+	}
+	/*
 	Usuario.findAll({
 		where: {
 			nombre: loginCredentials.user,
@@ -48,7 +54,7 @@ function loginUser(req, res) {
 		},
 	})
 		.then((x) => {
-			//console.log(x)
+			console.log(x)
 			//console.log(user)
 			if (x.length === 0) {
 				res.render("index", { title: "Box note",msj:{err:"Usuario o contraseña incorrectos"}});
@@ -57,6 +63,7 @@ function loginUser(req, res) {
 			}
 		})
 		.catch((err) => console.log("Fallamos con total exito", err));
+	*/
 }
 
 function renderSignin(req, res) {
@@ -67,8 +74,8 @@ function renderListUsers(req, res) {
 		attributes: ["nombre", "email"],
 	}).then((list) => {
 		var arryUser = [];
+		
 		list.forEach((x) => arryUser.push(x.dataValues));
-		// console.log(lista)
 		res.render("listarUsers", { usuarios: arryUser });
 	});
 }
