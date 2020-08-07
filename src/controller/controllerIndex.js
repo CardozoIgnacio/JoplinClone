@@ -1,10 +1,12 @@
-const controllerIndex = {}
+const controllerIndex = {};
 
-function indexRender(req,res){
-   console.log(process.env.DATABASE_URL) 
-    res.render('index',{title:"Box Note",version:"1.0",msj:{err:false}})
-    
+function indexRender(req, res) {
+	res.render("index", {
+		title: `Box Note`,
+		version: "2.0",
+		msj: { err: false },
+	});
 }
 
-controllerIndex.indexRender= indexRender
-module.exports= controllerIndex
+controllerIndex.indexRender = indexRender;
+module.exports = controllerIndex;
