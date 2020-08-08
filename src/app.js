@@ -10,8 +10,8 @@ var notebookRouter = require("./routes/booknote");
 var flash = require("express-flash");
 var session = require("express-session");
 var passport = require("passport");
-// var initalize = require("./passport-config");
-// initalize(passport);
+var initalize = require("./passport-config");
+initalize(passport);
 
 //require('./db/dbAssociations');
 //const db = require("./db/dbConector");
@@ -30,12 +30,14 @@ app.use(express.static(path.join(__dirname, "../public")));
 app.use(flash());
 app.use(
 	session({
-		secret: process.env.SECRET,
+		secret: process.env.SECRET, //Encritpa los datos
 		resave: false, //Evita que se vuelva a salvar si no hay cambios
-		saveUninitialized: true, //Evita la inicializacion de la session en vacio
+		saveUninitialized: false, //Evita la inicializacion de la session en vacio
 		// cookie: { secure: true }
 	})
 );
+app.use(passport.initialize())
+app.use(passport.session())
 
 app.use("/", indexRouter);
 app.use("/user", usersRouter);

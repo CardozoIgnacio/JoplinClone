@@ -2,7 +2,8 @@ var express = require('express')
 var router = express.Router();
 var controllerNoteBook=require('../controller/controllerBooknote')
 
-router.get('/',controllerNoteBook.renderBooknote)
+const controllPass =require('../controller/controllerPassport')
+router.get('/',controllPass.checkAutenticated,controllerNoteBook.renderBooknote)
 router.post('/createbooknote',controllerNoteBook.createBooknote)
 router.post('/createnote',controllerNoteBook.createNote)
 router.post('/destroynote',controllerNoteBook.destroyNote)
