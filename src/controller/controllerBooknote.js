@@ -6,10 +6,19 @@ const db= require('../db/dbAssociations')
 function renderBooknote(req, res) {
 	//noteBookModel
 	//db.models.booknotes
+	console.log("EL id del usuario es",req.user)
+
 	db.booknote
-		.findAll()
+		.findAll({
+			where:{usuario_id : req.user}
+		})
 		.then((resp) => {
-			//console.log("La respuesta a la consulta es: ",resp)
+			const respuesta = []
+			resp.forEach(elem=>{
+				let { dataValues }= elem
+				respuesta.push(dataValues)
+			})
+			console.log("La respuesta a la consulta es: ",respuesta)
 			res.render("booknoteCreate", { title: "Creacion de noteBook" });
 		})
 		.catch((err) => {

@@ -33,11 +33,12 @@ app.use(
 		secret: process.env.SECRET, //Encritpa los datos
 		resave: false, //Evita que se vuelva a salvar si no hay cambios
 		saveUninitialized: false, //Evita la inicializacion de la session en vacio
-		// cookie: { secure: true }
+		//cookie: { secure: true },
+
 	})
 );
-app.use(passport.initialize())
-app.use(passport.session())
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use("/", indexRouter);
 app.use("/user", usersRouter);

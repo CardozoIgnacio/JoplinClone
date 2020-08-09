@@ -90,10 +90,16 @@ function renderListUsers(req, res) {
 	});
 }
 
+function logOutUser(req,res) {
+	req.logOut()
+	res.render("index", { title: "Box note ", msj: {} });
+}
+
 
 controllerUser.getUsers = getUsers;
 controllerUser.createUser = createUser;
 controllerUser.loginUser = loginUser;
 controllerUser.renderSignin = renderSignin;
 controllerUser.renderListUsers = renderListUsers;
+controllerUser.logoutuser= logOutUser;
 module.exports = controllerUser;

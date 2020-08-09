@@ -9,8 +9,8 @@ const db= new Sequelize('loginsequelize', 'admindb', '123..456', {
 });
 console.log(process.env.DATABASE_URL)
 */
-//const db = new Sequelize(process.env.DATABASE_URL,{logging:false,sync:{force:true})
-const db = new Sequelize(process.env.DATABASE_URL,{logging:false})
+const db = new Sequelize(process.env.DATABASE_URL,{logging:false,sync:{force:true}})
+//const db = new Sequelize(process.env.DATABASE_URL,{logging:false})
 
 //TODO: Validate connection for invalid usero o down DB
 module.exports = db

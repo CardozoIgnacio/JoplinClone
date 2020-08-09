@@ -19,4 +19,5 @@ router.post(
   })
 );
 router.post("/", controllerUser.createUser);
+router.post("/logout",controllerUser.logoutuser)
 module.exports = router;

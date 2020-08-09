@@ -1,6 +1,5 @@
 const localStrategy = require("passport-local").Strategy;
 const Usuario = require("./model/userModel");
-const { validUser } = require("./model/userModel");
 
 function initalize(passport) {
   const autenticateUser = (user, pass, done) => {
@@ -26,14 +25,14 @@ function initalize(passport) {
   passport.serializeUser(async(user, done) => {
     try {
       const {dataValues}= await Usuario.findOne({where:{nombre:user}})
-      console.log(dataValues.id)
       done(null,dataValues.id);
     } catch (error) {
-      console.log("el error sale x aca",error)  
+      console.error("SerializeUser--->",error) //TODO: Renderizar error de Fallo de serializacion del server
     }
   });
   passport.deserializeUser((id, done) => {
-    return done(null, Usuario.findByPk(id));
+    //const {dataValues} = await Usuario.findByPk(id)
+    return done(null, id);
   });
 }
 
