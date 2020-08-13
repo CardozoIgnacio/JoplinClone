@@ -5,8 +5,8 @@ const controllPass =require('../controller/controllerPassport')
 
 
 
-router.get('/',controllPass.checkAutenticated,controllerNoteBook.renderBooknote)
-//router.get('/',controllerNoteBook.renderBooknote)
+//router.get('/',controllPass.checkAutenticated,controllerNoteBook.renderBooknote)
+router.get('/',controllerNoteBook.renderBooknote)
 
 router.post('/createbooknote',controllerNoteBook.createBooknote)
 router.post('/createnote',controllerNoteBook.createNote)

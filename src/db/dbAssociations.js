@@ -5,7 +5,7 @@ const db = require("./dbConector");
 
 function defineAssociations() {
 	booknote.hasMany(note, {
-		as: "notes",
+		//as: "notes",
 		foreignKey: "booknote_id",
 		onDelete: "CASCADE",
 		hooks: true,
@@ -20,8 +20,8 @@ function defineAssociations() {
 		 hooks: true ,
 		foreignKey:"booknote_id"});
     user.hasMany(booknote, 
-        { as: "booknoters"
-		, foreignKey: "usuario_id"
+		{ //as: "booknoters",
+		 foreignKey: "usuario_id"
 	 });
 
 		db.sync()
